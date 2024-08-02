@@ -1,0 +1,42 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore DailySummaryService/DailySummaryService.csproj
+
+    - name: Build solution
+      run: dotnet build DailySummaryService/DailySummaryService.csproj --configuration Release
+
+    - name: Run tests
+      run: dotnet test DailySummaryService/DailySummaryService.csproj --configuration Release --no-build --verbosity normal
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: DailySummaryService/Dockerfile
+        push: true
+        tags: your-dockerhub-username/daily-summary-service:latest
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
