@@ -36,7 +36,7 @@ jobs:
         context: .
         file: DailySummaryService/Dockerfile
         push: true
-        tags: your-dockerhub-username/daily-summary-service:latest
+        tags: devpraxis/daily-summary-service:latest
       env:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
