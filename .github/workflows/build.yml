@@ -30,7 +30,7 @@ jobs:
     - name: Run tests
       run: dotnet test DailySummaryService/DailySummaryService.csproj --configuration Release --no-build --verbosity normal
 
-# bypass dockerhub free account
+    # bypass dockerhub free account
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
