@@ -18,10 +18,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\CashFlowControl.Solution\CashFlowControl.Shared\CashFlowControl.Application\CashFlowControl.Application.csproj" />
-    <ProjectReference Include="..\..\CashFlowControl.Solution\CashFlowControl.Shared\CashFlowControl.Core\CashFlowControl.Core.csproj" />
-    <ProjectReference Include="..\..\CashFlowControl.Solution\CashFlowControl.Shared\CashFlowControl.Infrastructure\CashFlowControl.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>
